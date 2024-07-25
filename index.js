@@ -238,7 +238,7 @@ button.addEventListener('click', () => {
 });
 
 window.addEventListener('keydown', e => {
-  if (e.key === 'r') {
+  if (e.key === 'r' || e.key === 'к') {
     resetCanvas();
   }
 });
