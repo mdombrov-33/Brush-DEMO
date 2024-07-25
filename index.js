@@ -36,6 +36,24 @@ const inset = 0.5;
 const n = 10;
 
 // Generate random values for shape parameters
+const randomColorShape1 = `rgba(${Math.floor(
+  Math.random() * 256
+)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(
+  Math.random() * 256
+)}, ${Math.random().toFixed(1)})`;
+
+const randomColorShape2 = `rgba(${Math.floor(
+  Math.random() * 256
+)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(
+  Math.random() * 256
+)}, ${Math.random().toFixed(1)})`;
+
+const randomColorShape3 = `rgba(${Math.floor(
+  Math.random() * 256
+)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(
+  Math.random() * 256
+)}, ${Math.random().toFixed(1)})`;
+
 const randomRadius1 = Math.random() * 100;
 const randomInset1 = Math.random();
 const randomSides1 = Math.floor(Math.random() * 10) + 3;
@@ -63,8 +81,9 @@ window.addEventListener('mousemove', e => {
 
     //First shape
     ctx.rotate(angle);
-    ctx.fillStyle = '#683bd9';
-    ctx.strokeStyle = 'black';
+    ctx.fillStyle = randomColorShape1;
+    ctx.strokeStyle = randomColorShape1;
+
     drawShape(
       radius / 0.5,
       radius / 5,
@@ -75,8 +94,9 @@ window.addEventListener('mousemove', e => {
 
     //Second shape
     ctx.rotate(-angle * 3);
-    ctx.fillStyle = '#b2a6ce';
-    ctx.strokeStyle = 'purple';
+    ctx.fillStyle = randomColorShape2;
+    ctx.strokeStyle = randomColorShape2;
+
     drawShape(
       radius / 1.25,
       radius / 5,
@@ -87,8 +107,8 @@ window.addEventListener('mousemove', e => {
 
     //Third shape
     ctx.rotate(-angle * 3);
-    ctx.fillStyle = 'purple';
-    ctx.strokeStyle = 'black';
+    ctx.fillStyle = randomColorShape3;
+    ctx.strokeStyle = randomColorShape3;
     drawShape(
       radius / 1.5,
       radius / 5,
@@ -110,3 +130,7 @@ window.addEventListener('mousedown', e => {
 window.addEventListener('mouseup', e => {
   isDrawing = false;
 });
+
+// `rgba(${Math.floor(Math.random() * 256)}, ${Math.floor(
+//     Math.random() * 256
+//   )}, ${Math.floor(Math.random() * 256)}, ${Math.random().toFixed(1)})`;
