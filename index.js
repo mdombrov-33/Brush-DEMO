@@ -77,26 +77,26 @@ const shapeProperties = {
   Shape1: {
     randomX: generateX(),
     randomY: generateY(),
-    randomRadiusShape1: generateRadius(),
-    randomInsetShape1: generateInset(),
-    randomSidesShape1: generateSides(),
-    randomColorShape1: generateColor(),
+    randomRadiusShape: generateRadius(),
+    randomInsetShape: generateInset(),
+    randomSidesShape: generateSides(),
+    randomColorShape: generateColor(),
   },
   Shape2: {
     randomX: generateX(),
     randomY: generateY(),
-    randomRadiusShape2: generateRadius(),
-    randomInsetShape2: generateInset(),
-    randomSidesShape2: generateSides(),
-    randomColorShape2: generateColor(),
+    randomRadiusShape: generateRadius(),
+    randomInsetShape: generateInset(),
+    randomSidesShape: generateSides(),
+    randomColorShape: generateColor(),
   },
   Shape3: {
     randomX: generateX(),
     randomY: generateY(),
-    randomRadiusShape3: generateRadius(),
-    randomInsetShape3: generateInset(),
-    randomSidesShape3: generateSides(),
-    randomColorShape3: generateColor(),
+    randomRadiusShape: generateRadius(),
+    randomInsetShape: generateInset(),
+    randomSidesShape: generateSides(),
+    randomColorShape: generateColor(),
   },
 };
 
@@ -105,22 +105,22 @@ drawShape(
   60,
   70,
   radius,
-  shapeProperties.Shape1.randomInsetShape1,
-  shapeProperties.Shape1.randomSidesShape1
+  shapeProperties.Shape1.randomInsetShape,
+  shapeProperties.Shape1.randomSidesShape
 );
 drawShape(
   60,
   190,
   radius,
-  shapeProperties.Shape2.randomInsetShape2,
-  shapeProperties.Shape2.randomSidesShape2
+  shapeProperties.Shape2.randomInsetShape,
+  shapeProperties.Shape2.randomSidesShape
 );
 drawShape(
   60,
   310,
   radius,
-  shapeProperties.Shape3.randomInsetShape3,
-  shapeProperties.Shape3.randomSidesShape3
+  shapeProperties.Shape3.randomInsetShape,
+  shapeProperties.Shape3.randomSidesShape
 );
 
 //Rotate shape + draw
@@ -131,41 +131,41 @@ window.addEventListener('mousemove', e => {
 
     //First shape
     ctx.rotate(angle);
-    ctx.fillStyle = shapeProperties.Shape1.randomColorShape1;
-    ctx.strokeStyle = shapeProperties.Shape1.randomColorShape1;
+    ctx.fillStyle = shapeProperties.Shape1.randomColorShape;
+    ctx.strokeStyle = shapeProperties.Shape1.randomColorShape;
 
     drawShape(
       shapeProperties.Shape1.randomX,
       shapeProperties.Shape1.randomY,
-      shapeProperties.Shape1.randomRadiusShape1,
-      shapeProperties.Shape1.randomInsetShape1,
-      shapeProperties.Shape1.randomSidesShape1
+      shapeProperties.Shape1.randomRadiusShape,
+      shapeProperties.Shape1.randomInsetShape,
+      shapeProperties.Shape1.randomSidesShape
     );
 
     //Second shape
     ctx.rotate(-angle * 3);
-    ctx.fillStyle = shapeProperties.Shape2.randomColorShape2;
-    ctx.strokeStyle = shapeProperties.Shape2.randomColorShape2;
+    ctx.fillStyle = shapeProperties.Shape2.randomColorShape;
+    ctx.strokeStyle = shapeProperties.Shape2.randomColorShape;
 
     drawShape(
       shapeProperties.Shape2.randomX,
       shapeProperties.Shape2.randomY,
-      shapeProperties.Shape2.randomRadiusShape2,
-      shapeProperties.Shape2.randomInsetShape2,
-      shapeProperties.Shape2.randomSidesShape2
+      shapeProperties.Shape2.randomRadiusShape,
+      shapeProperties.Shape2.randomInsetShape,
+      shapeProperties.Shape2.randomSidesShape
     );
 
     //Third shape
     ctx.rotate(-angle * 3);
-    ctx.fillStyle = shapeProperties.Shape3.randomColorShape3;
-    ctx.strokeStyle = shapeProperties.Shape3.randomColorShape3;
+    ctx.fillStyle = shapeProperties.Shape3.randomColorShape;
+    ctx.strokeStyle = shapeProperties.Shape3.randomColorShape;
 
     drawShape(
       shapeProperties.Shape3.randomX,
       shapeProperties.Shape3.randomY,
-      shapeProperties.Shape3.randomRadiusShape3,
-      shapeProperties.Shape3.randomInsetShape3,
-      shapeProperties.Shape3.randomSidesShape3
+      shapeProperties.Shape3.randomRadiusShape,
+      shapeProperties.Shape3.randomInsetShape,
+      shapeProperties.Shape3.randomSidesShape
     );
 
     angle += 0.1;
@@ -182,31 +182,29 @@ window.addEventListener('mouseup', () => {
   isDrawing = false;
 });
 
-console.log(shapeProperties);
-
 //Reset
 function resetCanvas() {
   // Reset shape properties
   shapeProperties.Shape1.randomX = generateX();
   shapeProperties.Shape1.randomY = generateY();
-  shapeProperties.Shape1.randomRadiusShape1 = generateRadius();
-  shapeProperties.Shape1.randomInsetShape1 = generateInset();
-  shapeProperties.Shape1.randomSidesShape1 = generateSides();
-  shapeProperties.Shape1.randomColorShape1 = generateColor();
+  shapeProperties.Shape1.randomRadiusShape = generateRadius();
+  shapeProperties.Shape1.randomInsetShape = generateInset();
+  shapeProperties.Shape1.randomSidesShape = generateSides();
+  shapeProperties.Shape1.randomColorShape = generateColor();
 
   shapeProperties.Shape2.randomX = generateX();
   shapeProperties.Shape2.randomY = generateY();
-  shapeProperties.Shape2.randomRadiusShape2 = generateRadius();
-  shapeProperties.Shape2.randomInsetShape2 = generateInset();
-  shapeProperties.Shape2.randomSidesShape2 = generateSides();
-  shapeProperties.Shape2.randomColorShape2 = generateColor();
+  shapeProperties.Shape2.randomRadiusShape = generateRadius();
+  shapeProperties.Shape2.randomInsetShape = generateInset();
+  shapeProperties.Shape2.randomSidesShape = generateSides();
+  shapeProperties.Shape2.randomColorShape = generateColor();
 
   shapeProperties.Shape3.randomX = generateX();
   shapeProperties.Shape3.randomY = generateY();
-  shapeProperties.Shape3.randomRadiusShape3 = generateRadius();
-  shapeProperties.Shape3.randomInsetShape3 = generateInset();
-  shapeProperties.Shape3.randomSidesShape3 = generateSides();
-  shapeProperties.Shape3.randomColorShape3 = generateColor();
+  shapeProperties.Shape3.randomRadiusShape = generateRadius();
+  shapeProperties.Shape3.randomInsetShape = generateInset();
+  shapeProperties.Shape3.randomSidesShape = generateSides();
+  shapeProperties.Shape3.randomColorShape = generateColor();
 
   // Clear canvas
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -216,22 +214,22 @@ function resetCanvas() {
     60,
     70,
     radius,
-    shapeProperties.Shape1.randomInsetShape1,
-    shapeProperties.Shape1.randomSidesShape1
+    shapeProperties.Shape1.randomInsetShape,
+    shapeProperties.Shape1.randomSidesShape
   );
   drawShape(
     60,
     190,
     radius,
-    shapeProperties.Shape2.randomInsetShape2,
-    shapeProperties.Shape2.randomSidesShape2
+    shapeProperties.Shape2.randomInsetShape,
+    shapeProperties.Shape2.randomSidesShape
   );
   drawShape(
     60,
     310,
     radius,
-    shapeProperties.Shape3.randomInsetShape3,
-    shapeProperties.Shape3.randomSidesShape3
+    shapeProperties.Shape3.randomInsetShape,
+    shapeProperties.Shape3.randomSidesShape
   );
 }
 
