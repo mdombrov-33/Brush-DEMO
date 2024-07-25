@@ -10,7 +10,7 @@ ctx.shadowBlur = 10;
 ctx.shadowColor = 'black';
 let hue = 0;
 let isDrawing = false;
-ctx.globalCompositeOperation = 'hue';
+// ctx.globalCompositeOperation = 'hue';
 
 function drawShape(x, y, radius, inset, n) {
   ctx.fillStyle = `hsl(${hue}, 100%, 50%)`;
