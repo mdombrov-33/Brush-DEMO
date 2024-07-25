@@ -21,7 +21,14 @@ button.style.right = '10px';
 button.style.visibility = 'visible';
 button.style.backgroundColor = 'white';
 
-//radius - outer radius; inset - modifier(proportion between outer and inner radius); n - number of sides
+const radius = 50;
+const inset = 0.5;
+const n = 10;
+let angle = 0;
+
+//  radius - outer radius
+//  inset - proportion between outer and inner radius, result in pixels. If value is close to 1 - more circle-like shape(polygon)
+//  n - number of sides
 function drawShape(x, y, radius, inset, n) {
   ctx.beginPath();
   ctx.save();
@@ -30,9 +37,9 @@ function drawShape(x, y, radius, inset, n) {
 
   for (let i = 0; i < n; i++) {
     ctx.rotate(Math.PI / n); //inner radius
-    ctx.lineTo(0, 0 - radius * inset);
+    ctx.lineTo(0, 0 - radius * inset); //first drawn segment, inner radius
     ctx.rotate(Math.PI / n); //rotate half circle by n
-    ctx.lineTo(0, 0 - radius); //outer radius
+    ctx.lineTo(0, 0 - radius); //second second segment, outer radius
   }
 
   ctx.restore();
@@ -40,11 +47,6 @@ function drawShape(x, y, radius, inset, n) {
   ctx.stroke();
   ctx.fill();
 }
-
-const radius = 50;
-const inset = 0.5;
-const n = 10;
-let angle = 0;
 
 // Generate random values for shape properties
 const generateRadius = () => {
