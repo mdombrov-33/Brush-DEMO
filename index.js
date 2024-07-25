@@ -22,12 +22,10 @@ button.style.visibility = 'visible';
 button.style.backgroundColor = 'white';
 
 const radius = 50;
-const inset = 0.5;
-const n = 10;
 let angle = 0;
 
 //  radius - outer radius
-//  inset - proportion between outer and inner radius, result in pixels. If value is close to 1 - more circle-like shape(polygon)
+//  inset - proportion between outer and inner radius, result of multiplication is in pixels. If value is close to 1 - more circle-like shape(polygon)
 //  n - number of sides
 function drawShape(x, y, radius, inset, n) {
   ctx.beginPath();
@@ -36,9 +34,9 @@ function drawShape(x, y, radius, inset, n) {
   ctx.moveTo(0, 0 - radius); //start coordinates
 
   for (let i = 0; i < n; i++) {
-    ctx.rotate(Math.PI / n); //inner radius
-    ctx.lineTo(0, 0 - radius * inset); //first drawn segment, inner radius
     ctx.rotate(Math.PI / n); //rotate half circle by n
+    ctx.lineTo(0, 0 - radius * inset); //first drawn segment, inner radius
+    ctx.rotate(Math.PI / n);
     ctx.lineTo(0, 0 - radius); //second second segment, outer radius
   }
 
@@ -162,26 +160,66 @@ window.addEventListener('mousemove', e => {
 });
 
 //State changes
-window.addEventListener('mousedown', e => {
+window.addEventListener('mousedown', () => {
   isDrawing = true;
 });
 
-window.addEventListener('mouseup', e => {
+window.addEventListener('mouseup', () => {
   isDrawing = false;
 });
 
 //Reset
-function restartPage() {
-  window.location.reload();
+function resetCanvas() {
+  // Reset shape properties
+  shapeProperties.Shape1.randomRadiusShape1 = generateRadius();
+  shapeProperties.Shape1.randomInsetShape1 = generateInset();
+  shapeProperties.Shape1.randomSidesShape1 = generateSides();
+  shapeProperties.Shape1.randomColorShape1 = generateColor();
+
+  shapeProperties.Shape2.randomRadiusShape2 = generateRadius();
+  shapeProperties.Shape2.randomInsetShape2 = generateInset();
+  shapeProperties.Shape2.randomSidesShape2 = generateSides();
+  shapeProperties.Shape2.randomColorShape2 = generateColor();
+
+  shapeProperties.Shape3.randomRadiusShape3 = generateRadius();
+  shapeProperties.Shape3.randomInsetShape3 = generateInset();
+  shapeProperties.Shape3.randomSidesShape3 = generateSides();
+  shapeProperties.Shape3.randomColorShape3 = generateColor();
+
+  // Clear canvas
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Redraw preview shapes
+  drawShape(
+    60,
+    70,
+    radius,
+    shapeProperties.Shape1.randomInsetShape1,
+    shapeProperties.Shape1.randomSidesShape1
+  );
+  drawShape(
+    150,
+    160,
+    radius,
+    shapeProperties.Shape2.randomInsetShape2,
+    shapeProperties.Shape2.randomSidesShape2
+  );
+  drawShape(
+    240,
+    250,
+    radius,
+    shapeProperties.Shape3.randomInsetShape3,
+    shapeProperties.Shape3.randomSidesShape3
+  );
 }
 
 button.addEventListener('click', () => {
-  restartPage();
+  resetCanvas();
 });
 
 window.addEventListener('keydown', e => {
   if (e.key === 'r') {
-    restartPage();
+    resetCanvas();
   }
 });
 
