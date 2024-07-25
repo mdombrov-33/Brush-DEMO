@@ -24,20 +24,32 @@ button.style.backgroundColor = 'white';
 const radius = 50;
 let angle = 0;
 
-//  radius - outer radius
-//  inset - proportion between outer and inner radius, result of multiplication is in pixels. If value is close to 1 - more circle-like shape(polygon)
-//  n - number of sides
+//*  x, y - coordinates of the center of the shape
+//*  Radius - outer radius
+
+//*  Inset - proportion between outer and inner radius. Controls the spiky look of the shape.
+//*  Result of multiplication(radius * inset) is in pixels.
+//*  If value of inset is close to 1 - result is more circle-like shape(polygon).
+//*  If value of inset is close to 0 - results in more star-like shape.
+//*  Combo of high inset(1+) and high number of sides(8+) can lead to shape distortion.
+//*  Value between 0.3 and 0.7 gives the best results.
+
+//*  n - number of sides, if value is close to 1 - shape looks like a line.
+
 function drawShape(x, y, radius, inset, n) {
   ctx.beginPath();
   ctx.save();
   ctx.translate(x, y);
   ctx.moveTo(0, 0 - radius); //start coordinates
 
+  //* Every time this loop runs, we draw first line from the center to the inner radius,
+  //* then rotate the canvas by half of the circle(Math.PI) and draw the second line from the center to the outer radius.
+  //* We use Math.PI(half circle) instead of Math.PI * 2(full circle) because this loop creates 2 segments every time it runs.
   for (let i = 0; i < n; i++) {
-    ctx.rotate(Math.PI / n); //rotate half circle by n
-    ctx.lineTo(0, 0 - radius * inset); //first drawn segment, inner radius
+    ctx.rotate(Math.PI / n); // rotate half circle(180 deg / 3.14 rad) by n
+    ctx.lineTo(0, 0 - radius * inset); // first drawn segment, outer radius
     ctx.rotate(Math.PI / n);
-    ctx.lineTo(0, 0 - radius); //second second segment, outer radius
+    ctx.lineTo(0, 0 - radius); // second drawn segment, inner radius
   }
 
   ctx.restore();
@@ -100,7 +112,7 @@ const shapeProperties = {
   },
 };
 
-//Shapes preview
+// Shapes preview
 drawShape(
   60,
   70,
@@ -123,13 +135,13 @@ drawShape(
   shapeProperties.Shape3.randomSidesShape
 );
 
-//Rotate shape + draw
+// Rotate shape + draw
 window.addEventListener('mousemove', e => {
   if (isDrawing) {
     ctx.save();
     ctx.translate(e.x, e.y);
 
-    //First shape
+    // First shape
     ctx.rotate(angle);
     ctx.fillStyle = shapeProperties.Shape1.randomColorShape;
     ctx.strokeStyle = shapeProperties.Shape1.randomColorShape;
@@ -142,7 +154,7 @@ window.addEventListener('mousemove', e => {
       shapeProperties.Shape1.randomSidesShape
     );
 
-    //Second shape
+    // Second shape
     ctx.rotate(-angle * 3);
     ctx.fillStyle = shapeProperties.Shape2.randomColorShape;
     ctx.strokeStyle = shapeProperties.Shape2.randomColorShape;
@@ -155,7 +167,7 @@ window.addEventListener('mousemove', e => {
       shapeProperties.Shape2.randomSidesShape
     );
 
-    //Third shape
+    // Third shape
     ctx.rotate(-angle * 3);
     ctx.fillStyle = shapeProperties.Shape3.randomColorShape;
     ctx.strokeStyle = shapeProperties.Shape3.randomColorShape;
@@ -173,7 +185,7 @@ window.addEventListener('mousemove', e => {
   }
 });
 
-//State changes
+// State changes
 window.addEventListener('mousedown', () => {
   isDrawing = true;
 });
@@ -182,7 +194,7 @@ window.addEventListener('mouseup', () => {
   isDrawing = false;
 });
 
-//Reset
+// Reset
 function resetCanvas() {
   // Reset shape properties
   shapeProperties.Shape1.randomX = generateX();
@@ -237,13 +249,14 @@ button.addEventListener('click', () => {
   resetCanvas();
 });
 
+// Hotkey for reset
 window.addEventListener('keydown', e => {
   if (e.key === 'r' || e.key === 'к') {
     resetCanvas();
   }
 });
 
-//Button
+// Block drawing over button, change color
 button.addEventListener('mouseover', () => {
   button.style.backgroundColor = 'rgb(204, 219, 209)';
   isDrawing = false;
