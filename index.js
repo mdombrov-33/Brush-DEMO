@@ -95,15 +95,15 @@ drawShape(
   shapeProperties.Shape1.randomSidesShape1
 );
 drawShape(
-  150,
-  160,
+  60,
+  190,
   radius,
   shapeProperties.Shape2.randomInsetShape2,
   shapeProperties.Shape2.randomSidesShape2
 );
 drawShape(
-  240,
-  250,
+  60,
+  310,
   radius,
   shapeProperties.Shape3.randomInsetShape3,
   shapeProperties.Shape3.randomSidesShape3
@@ -198,15 +198,15 @@ function resetCanvas() {
     shapeProperties.Shape1.randomSidesShape1
   );
   drawShape(
-    150,
-    160,
+    60,
+    190,
     radius,
     shapeProperties.Shape2.randomInsetShape2,
     shapeProperties.Shape2.randomSidesShape2
   );
   drawShape(
-    240,
-    250,
+    60,
+    310,
     radius,
     shapeProperties.Shape3.randomInsetShape3,
     shapeProperties.Shape3.randomSidesShape3
