@@ -2,15 +2,16 @@ const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 canvas.height = window.innerHeight;
 canvas.width = window.innerWidth;
-ctx.fillStyle = 'grey';
-ctx.strokeStyle = 'purple';
+ctx.strokeStyle = 'black';
 ctx.lineWidth = 2;
 ctx.shadowOffsetX = 10;
 ctx.shadowOffsetY = 10;
 ctx.shadowBlur = 10;
 ctx.shadowColor = 'black';
+let hue = 0;
 
 function drawShape(x, y, radius, inset, n) {
+  ctx.fillStyle = `hsl(${hue}, 100%, 50%)`;
   ctx.beginPath();
   ctx.save();
   ctx.translate(x, y);
@@ -28,8 +29,13 @@ function drawShape(x, y, radius, inset, n) {
   ctx.stroke();
   ctx.fill();
 }
-drawShape(100, 100, 100, 0.3, 7);
+const radius = 100;
+const inset = 0.3;
+const n = 6;
+
+drawShape(100, 100, radius, inset, n);
 
 window.addEventListener('mousemove', e => {
-  drawShape(e.x, e.y, 150, 0.3, 7);
+  drawShape(e.x, e.y, radius, inset, n);
+  hue++;
 });
