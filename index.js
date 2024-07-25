@@ -9,7 +9,6 @@ ctx.shadowOffsetY = 10;
 ctx.shadowBlur = 10;
 ctx.shadowColor = 'black';
 ctx.fillStyle = 'rgb(204, 219, 209)';
-let hue = 0;
 let isDrawing = false;
 
 const button = document.createElement('button');
@@ -41,36 +40,49 @@ function drawShape(x, y, radius, inset, n) {
   ctx.stroke();
   ctx.fill();
 }
+
 const radius = 50;
 const inset = 0.5;
 const n = 10;
 let angle = 0;
 
-// Generate random values for shape parameters
+// Generate random values for shape properties
+const generateRadius = () => {
+  return Math.random() * 100;
+};
+
+const generateInset = () => {
+  return Math.random();
+};
+
+const generateSides = () => {
+  return Math.floor(Math.random() * 10) + 3;
+};
+
+const generateColor = () => {
+  return `rgba(${Math.floor(Math.random() * 256)}, ${Math.floor(
+    Math.random() * 256
+  )}, ${Math.floor(Math.random() * 256)}, ${Math.random().toFixed(1)})`;
+};
+
 const shapeProperties = {
   Shape1: {
-    randomRadiusShape1: Math.random() * 100,
-    randomInsetShape1: Math.random(),
-    randomSidesShape1: Math.floor(Math.random() * 10) + 3,
-    randomColorShape1: `rgba(${Math.floor(Math.random() * 256)}, ${Math.floor(
-      Math.random() * 256
-    )}, ${Math.floor(Math.random() * 256)}, ${Math.random().toFixed(1)})`,
+    randomRadiusShape1: generateRadius(),
+    randomInsetShape1: generateInset(),
+    randomSidesShape1: generateSides(),
+    randomColorShape1: generateColor(),
   },
   Shape2: {
-    randomRadiusShape2: Math.random() * 100,
-    randomInsetShape2: Math.random(),
-    randomSidesShape2: Math.floor(Math.random() * 10) + 3,
-    randomColorShape2: `rgba(${Math.floor(Math.random() * 256)}, ${Math.floor(
-      Math.random() * 256
-    )}, ${Math.floor(Math.random() * 256)}, ${Math.random().toFixed(1)})`,
+    randomRadiusShape2: generateRadius(),
+    randomInsetShape2: generateInset(),
+    randomSidesShape2: generateSides(),
+    randomColorShape2: generateColor(),
   },
   Shape3: {
-    randomRadiusShape3: Math.random() * 100,
-    randomInsetShape3: Math.random(),
-    randomSidesShape3: Math.floor(Math.random() * 10) + 3,
-    randomColorShape3: `rgba(${Math.floor(Math.random() * 256)}, ${Math.floor(
-      Math.random() * 256
-    )}, ${Math.floor(Math.random() * 256)}, ${Math.random().toFixed(1)})`,
+    randomRadiusShape3: generateRadius(),
+    randomInsetShape3: generateInset(),
+    randomSidesShape3: generateSides(),
+    randomColorShape3: generateColor(),
   },
 };
 
@@ -78,21 +90,21 @@ const shapeProperties = {
 drawShape(
   60,
   70,
-  shapeProperties.Shape1.randomRadiusShape1,
+  radius,
   shapeProperties.Shape1.randomInsetShape1,
   shapeProperties.Shape1.randomSidesShape1
 );
 drawShape(
   150,
   160,
-  shapeProperties.Shape2.randomRadiusShape2,
+  radius,
   shapeProperties.Shape2.randomInsetShape2,
   shapeProperties.Shape2.randomSidesShape2
 );
 drawShape(
   240,
   250,
-  shapeProperties.Shape3.randomRadiusShape3,
+  radius,
   shapeProperties.Shape3.randomInsetShape3,
   shapeProperties.Shape3.randomSidesShape3
 );
@@ -133,6 +145,7 @@ window.addEventListener('mousemove', e => {
     ctx.rotate(-angle * 3);
     ctx.fillStyle = shapeProperties.Shape3.randomColorShape3;
     ctx.strokeStyle = shapeProperties.Shape3.randomColorShape3;
+
     drawShape(
       radius / 1.5,
       radius / 5,
