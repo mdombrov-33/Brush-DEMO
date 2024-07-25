@@ -64,22 +64,46 @@ const randomColorShape3 = `rgba(${Math.floor(
   Math.random() * 256
 )}, ${Math.random().toFixed(1)})`;
 
-const randomRadiusShape1 = Math.random() * 100;
-const randomInsetShape1 = Math.random();
-const randomSidesShape1 = Math.floor(Math.random() * 10) + 3;
-
-const randomRadiusShape2 = Math.random() * 100;
-const randomInsetShape2 = Math.random();
-const randomSidesShape2 = Math.floor(Math.random() * 10) + 3;
-
-const randomRadiusShape3 = Math.random() * 100;
-const randomInsetShape3 = Math.random();
-const randomSidesShape3 = Math.floor(Math.random() * 10) + 3;
+const shapeProperties = {
+  Shape1: {
+    randomRadiusShape1: Math.random() * 100,
+    randomInsetShape1: Math.random(),
+    randomSidesShape1: Math.floor(Math.random() * 10) + 3,
+  },
+  Shape2: {
+    randomRadiusShape2: Math.random() * 100,
+    randomInsetShape2: Math.random(),
+    randomSidesShape2: Math.floor(Math.random() * 10) + 3,
+  },
+  Shape3: {
+    randomRadiusShape3: Math.random() * 100,
+    randomInsetShape3: Math.random(),
+    randomSidesShape3: Math.floor(Math.random() * 10) + 3,
+  },
+};
 
 //Shapes preview
-drawShape(60, 70, randomRadiusShape1, randomInsetShape1, randomSidesShape1);
-drawShape(150, 160, randomRadiusShape2, randomInsetShape2, randomSidesShape2);
-drawShape(240, 250, randomRadiusShape3, randomInsetShape3, randomSidesShape3);
+drawShape(
+  60,
+  70,
+  shapeProperties.Shape1.randomRadiusShape1,
+  shapeProperties.Shape1.randomInsetShape1,
+  shapeProperties.Shape1.randomSidesShape1
+);
+drawShape(
+  150,
+  160,
+  shapeProperties.Shape2.randomRadiusShape2,
+  shapeProperties.Shape2.randomInsetShape2,
+  shapeProperties.Shape2.randomSidesShape2
+);
+drawShape(
+  240,
+  250,
+  shapeProperties.Shape3.randomRadiusShape3,
+  shapeProperties.Shape3.randomInsetShape3,
+  shapeProperties.Shape3.randomSidesShape3
+);
 
 let angle = 0;
 
@@ -97,9 +121,9 @@ window.addEventListener('mousemove', e => {
     drawShape(
       radius / 0.5,
       radius / 5,
-      randomRadiusShape1,
-      randomInsetShape2,
-      randomSidesShape3
+      shapeProperties.Shape1.randomRadiusShape1,
+      shapeProperties.Shape1.randomInsetShape1,
+      shapeProperties.Shape1.randomSidesShape1
     );
 
     //Second shape
@@ -110,9 +134,9 @@ window.addEventListener('mousemove', e => {
     drawShape(
       radius / 1.25,
       radius / 5,
-      randomRadiusShape2,
-      randomInsetShape2,
-      randomSidesShape2
+      shapeProperties.Shape2.randomRadiusShape2,
+      shapeProperties.Shape2.randomInsetShape2,
+      shapeProperties.Shape2.randomSidesShape2
     );
 
     //Third shape
@@ -122,9 +146,9 @@ window.addEventListener('mousemove', e => {
     drawShape(
       radius / 1.5,
       radius / 5,
-      randomRadiusShape3,
-      randomInsetShape3,
-      randomSidesShape3
+      shapeProperties.Shape3.randomRadiusShape3,
+      shapeProperties.Shape3.randomInsetShape3,
+      shapeProperties.Shape3.randomSidesShape3
     );
 
     angle += 0.1;
@@ -141,24 +165,26 @@ window.addEventListener('mouseup', e => {
   isDrawing = false;
 });
 
+//Reset
+function restartPage() {
+  window.location.reload();
+}
+
 button.addEventListener('click', () => {
   restartPage();
 });
 
+window.addEventListener('keydown', e => {
+  if (e.key === 'r') {
+    restartPage();
+  }
+});
+
+//Button
 button.addEventListener('mouseover', () => {
   button.style.backgroundColor = 'rgb(204, 219, 209)';
   isDrawing = false;
 });
 button.addEventListener('mouseout', () => {
   button.style.backgroundColor = 'white';
-});
-
-function restartPage() {
-  window.location.reload();
-}
-
-window.addEventListener('keydown', e => {
-  if (e.key === 'r') {
-    restartPage();
-  }
 });
