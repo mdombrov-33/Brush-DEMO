@@ -44,41 +44,33 @@ function drawShape(x, y, radius, inset, n) {
 const radius = 50;
 const inset = 0.5;
 const n = 10;
+let angle = 0;
 
 // Generate random values for shape parameters
-const randomColorShape1 = `rgba(${Math.floor(
-  Math.random() * 256
-)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(
-  Math.random() * 256
-)}, ${Math.random().toFixed(1)})`;
-
-const randomColorShape2 = `rgba(${Math.floor(
-  Math.random() * 256
-)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(
-  Math.random() * 256
-)}, ${Math.random().toFixed(1)})`;
-
-const randomColorShape3 = `rgba(${Math.floor(
-  Math.random() * 256
-)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(
-  Math.random() * 256
-)}, ${Math.random().toFixed(1)})`;
-
 const shapeProperties = {
   Shape1: {
     randomRadiusShape1: Math.random() * 100,
     randomInsetShape1: Math.random(),
     randomSidesShape1: Math.floor(Math.random() * 10) + 3,
+    randomColorShape1: `rgba(${Math.floor(Math.random() * 256)}, ${Math.floor(
+      Math.random() * 256
+    )}, ${Math.floor(Math.random() * 256)}, ${Math.random().toFixed(1)})`,
   },
   Shape2: {
     randomRadiusShape2: Math.random() * 100,
     randomInsetShape2: Math.random(),
     randomSidesShape2: Math.floor(Math.random() * 10) + 3,
+    randomColorShape2: `rgba(${Math.floor(Math.random() * 256)}, ${Math.floor(
+      Math.random() * 256
+    )}, ${Math.floor(Math.random() * 256)}, ${Math.random().toFixed(1)})`,
   },
   Shape3: {
     randomRadiusShape3: Math.random() * 100,
     randomInsetShape3: Math.random(),
     randomSidesShape3: Math.floor(Math.random() * 10) + 3,
+    randomColorShape3: `rgba(${Math.floor(Math.random() * 256)}, ${Math.floor(
+      Math.random() * 256
+    )}, ${Math.floor(Math.random() * 256)}, ${Math.random().toFixed(1)})`,
   },
 };
 
@@ -105,8 +97,6 @@ drawShape(
   shapeProperties.Shape3.randomSidesShape3
 );
 
-let angle = 0;
-
 //Rotate shape + draw
 window.addEventListener('mousemove', e => {
   if (isDrawing) {
@@ -115,8 +105,8 @@ window.addEventListener('mousemove', e => {
 
     //First shape
     ctx.rotate(angle);
-    ctx.fillStyle = randomColorShape1;
-    ctx.strokeStyle = randomColorShape1;
+    ctx.fillStyle = shapeProperties.Shape1.randomColorShape1;
+    ctx.strokeStyle = shapeProperties.Shape1.randomColorShape1;
 
     drawShape(
       radius / 0.5,
@@ -128,8 +118,8 @@ window.addEventListener('mousemove', e => {
 
     //Second shape
     ctx.rotate(-angle * 3);
-    ctx.fillStyle = randomColorShape2;
-    ctx.strokeStyle = randomColorShape2;
+    ctx.fillStyle = shapeProperties.Shape2.randomColorShape2;
+    ctx.strokeStyle = shapeProperties.Shape2.randomColorShape2;
 
     drawShape(
       radius / 1.25,
@@ -141,8 +131,8 @@ window.addEventListener('mousemove', e => {
 
     //Third shape
     ctx.rotate(-angle * 3);
-    ctx.fillStyle = randomColorShape3;
-    ctx.strokeStyle = randomColorShape3;
+    ctx.fillStyle = shapeProperties.Shape3.randomColorShape3;
+    ctx.strokeStyle = shapeProperties.Shape3.randomColorShape3;
     drawShape(
       radius / 1.5,
       radius / 5,
