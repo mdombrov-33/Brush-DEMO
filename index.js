@@ -65,20 +65,34 @@ const generateColor = () => {
   )}, ${Math.floor(Math.random() * 256)}, ${Math.random().toFixed(1)})`;
 };
 
+const generateX = () => {
+  return Math.random() * 50;
+};
+
+const generateY = () => {
+  return Math.random() * 50;
+};
+
 const shapeProperties = {
   Shape1: {
+    randomX: generateX(),
+    randomY: generateY(),
     randomRadiusShape1: generateRadius(),
     randomInsetShape1: generateInset(),
     randomSidesShape1: generateSides(),
     randomColorShape1: generateColor(),
   },
   Shape2: {
+    randomX: generateX(),
+    randomY: generateY(),
     randomRadiusShape2: generateRadius(),
     randomInsetShape2: generateInset(),
     randomSidesShape2: generateSides(),
     randomColorShape2: generateColor(),
   },
   Shape3: {
+    randomX: generateX(),
+    randomY: generateY(),
     randomRadiusShape3: generateRadius(),
     randomInsetShape3: generateInset(),
     randomSidesShape3: generateSides(),
@@ -121,8 +135,8 @@ window.addEventListener('mousemove', e => {
     ctx.strokeStyle = shapeProperties.Shape1.randomColorShape1;
 
     drawShape(
-      radius / 0.5,
-      radius / 5,
+      shapeProperties.Shape1.randomX,
+      shapeProperties.Shape1.randomY,
       shapeProperties.Shape1.randomRadiusShape1,
       shapeProperties.Shape1.randomInsetShape1,
       shapeProperties.Shape1.randomSidesShape1
@@ -134,8 +148,8 @@ window.addEventListener('mousemove', e => {
     ctx.strokeStyle = shapeProperties.Shape2.randomColorShape2;
 
     drawShape(
-      radius / 1.25,
-      radius / 5,
+      shapeProperties.Shape2.randomX,
+      shapeProperties.Shape2.randomY,
       shapeProperties.Shape2.randomRadiusShape2,
       shapeProperties.Shape2.randomInsetShape2,
       shapeProperties.Shape2.randomSidesShape2
@@ -147,8 +161,8 @@ window.addEventListener('mousemove', e => {
     ctx.strokeStyle = shapeProperties.Shape3.randomColorShape3;
 
     drawShape(
-      radius / 1.5,
-      radius / 5,
+      shapeProperties.Shape3.randomX,
+      shapeProperties.Shape3.randomY,
       shapeProperties.Shape3.randomRadiusShape3,
       shapeProperties.Shape3.randomInsetShape3,
       shapeProperties.Shape3.randomSidesShape3
@@ -168,19 +182,27 @@ window.addEventListener('mouseup', () => {
   isDrawing = false;
 });
 
+console.log(shapeProperties);
+
 //Reset
 function resetCanvas() {
   // Reset shape properties
+  shapeProperties.Shape1.randomX = generateX();
+  shapeProperties.Shape1.randomY = generateY();
   shapeProperties.Shape1.randomRadiusShape1 = generateRadius();
   shapeProperties.Shape1.randomInsetShape1 = generateInset();
   shapeProperties.Shape1.randomSidesShape1 = generateSides();
   shapeProperties.Shape1.randomColorShape1 = generateColor();
 
+  shapeProperties.Shape2.randomX = generateX();
+  shapeProperties.Shape2.randomY = generateY();
   shapeProperties.Shape2.randomRadiusShape2 = generateRadius();
   shapeProperties.Shape2.randomInsetShape2 = generateInset();
   shapeProperties.Shape2.randomSidesShape2 = generateSides();
   shapeProperties.Shape2.randomColorShape2 = generateColor();
 
+  shapeProperties.Shape3.randomX = generateX();
+  shapeProperties.Shape3.randomY = generateY();
   shapeProperties.Shape3.randomRadiusShape3 = generateRadius();
   shapeProperties.Shape3.randomInsetShape3 = generateInset();
   shapeProperties.Shape3.randomSidesShape3 = generateSides();
