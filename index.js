@@ -130,7 +130,3 @@ window.addEventListener('mousedown', e => {
 window.addEventListener('mouseup', e => {
   isDrawing = false;
 });
-
-// `rgba(${Math.floor(Math.random() * 256)}, ${Math.floor(
-//     Math.random() * 256
-//   )}, ${Math.floor(Math.random() * 256)}, ${Math.random().toFixed(1)})`;
