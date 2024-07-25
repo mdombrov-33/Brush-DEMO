@@ -2,6 +2,8 @@ const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 canvas.height = window.innerHeight;
 canvas.width = window.innerWidth;
+ctx.fillStyle = 'blue';
+ctx.lineWidth = 5;
 
 function drawShape(radius, inset, n) {
   ctx.beginPath();
@@ -19,5 +21,6 @@ function drawShape(radius, inset, n) {
   ctx.restore();
   ctx.closePath();
   ctx.stroke();
+  ctx.fill();
 }
 drawShape(100, 0.5, 6);
