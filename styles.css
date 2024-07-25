@@ -9,6 +9,12 @@ body {
 }
 
 canvas {
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(70, 69, 99, 1) 100%
+  );
+
   position: absolute;
   top: 0;
   left: 0;

@@ -8,12 +8,12 @@ ctx.shadowOffsetX = 10;
 ctx.shadowOffsetY = 10;
 ctx.shadowBlur = 10;
 ctx.shadowColor = 'black';
+ctx.fillStyle = 'grey';
 let hue = 0;
 let isDrawing = false;
 // ctx.globalCompositeOperation = 'hue';
 
 function drawShape(x, y, radius, inset, n) {
-  ctx.fillStyle = `hsl(${hue}, 100%, 50%)`;
   ctx.beginPath();
   ctx.save();
   ctx.translate(x, y);
@@ -36,18 +36,31 @@ const inset = 0.5;
 const n = 10;
 
 //Shape preview
-drawShape(100, 100, radius, inset, n);
+drawShape(70, 70, radius * 0.95, 0.2, 5);
+drawShape(120, 120, radius, inset, n);
 
 let angle = 0;
 
+//Rotate shape + draw
 window.addEventListener('mousemove', e => {
   if (isDrawing) {
     ctx.save();
     ctx.translate(e.x, e.y);
+
     ctx.rotate(angle);
-    hue += 3;
+    ctx.strokeStyle = 'black';
+    ctx.fillStyle = 'grey';
+    drawShape(0, 0, radius, 1, 3);
+
+    ctx.rotate(-angle * 3);
+    ctx.fillStyle = 'black';
+    ctx.strokeStyle = 'purple';
+    drawShape(radius / 1.25, radius / 5, radius, inset, n);
+
+    ctx.rotate(-angle * 3);
+    drawShape(radius / 1.5, radius / 5, radius + 0.5, inset, n);
+
     angle += 0.1;
-    drawShape(0, 0, radius, inset, n);
     ctx.restore();
   }
 });
