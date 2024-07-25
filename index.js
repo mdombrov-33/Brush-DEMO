@@ -9,6 +9,8 @@ ctx.shadowOffsetY = 10;
 ctx.shadowBlur = 10;
 ctx.shadowColor = 'black';
 let hue = 0;
+let isDrawing = false;
+ctx.globalCompositeOperation = 'hue';
 
 function drawShape(x, y, radius, inset, n) {
   ctx.fillStyle = `hsl(${hue}, 100%, 50%)`;
@@ -29,13 +31,31 @@ function drawShape(x, y, radius, inset, n) {
   ctx.stroke();
   ctx.fill();
 }
-const radius = 100;
-const inset = 0.3;
-const n = 6;
+const radius = 50;
+const inset = 0.5;
+const n = 10;
 
+//Shape preview
 drawShape(100, 100, radius, inset, n);
 
+let angle = 0;
+
 window.addEventListener('mousemove', e => {
-  drawShape(e.x, e.y, radius, inset, n);
-  hue++;
+  if (isDrawing) {
+    ctx.save();
+    ctx.translate(e.x, e.y);
+    ctx.rotate(angle);
+    hue += 3;
+    angle += 0.1;
+    drawShape(0, 0, radius, inset, n);
+    ctx.restore();
+  }
+});
+
+window.addEventListener('mousedown', e => {
+  isDrawing = true;
+});
+
+window.addEventListener('mouseup', e => {
+  isDrawing = false;
 });
