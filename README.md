@@ -1,1 +1,5 @@
-Creative brushing created with Canvas API. Hold left mouse button to draw.
+### Colorful brush
+
+- Hold Left Mouse Button to draw
+- Use 'R' button on keyboard or Reset to restart
+- Shapes and colors are randomized
