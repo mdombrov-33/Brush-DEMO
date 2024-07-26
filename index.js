@@ -62,10 +62,11 @@ function drawShape(x, y, radius, inset, n) {
 const generateRadius = () => Math.random() * 100;
 const generateInset = () => Math.random();
 const generateSides = () => Math.floor(Math.random() * 10) + 3;
-const generateColor = () =>
-  `rgba(${Math.floor(Math.random() * 256)}, ${Math.floor(
-    Math.random() * 256
-  )}, ${Math.floor(Math.random() * 256)}, ${Math.random().toFixed(1)})`;
+const generateColor = () => `rgba(
+${Math.floor(Math.random() * 256)},
+${Math.floor(Math.random() * 256)},
+${Math.floor(Math.random() * 256)}, 
+${(Math.random() * (1 - 0.1) + 0.1).toFixed(1)})`;
 const generateX = () => Math.random() * 50;
 const generateY = () => Math.random() * 50;
 
