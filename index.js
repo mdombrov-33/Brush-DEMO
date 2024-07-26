@@ -59,31 +59,15 @@ function drawShape(x, y, radius, inset, n) {
 }
 
 // Generate random values for shape properties
-const generateRadius = () => {
-  return Math.random() * 100;
-};
-
-const generateInset = () => {
-  return Math.random();
-};
-
-const generateSides = () => {
-  return Math.floor(Math.random() * 10) + 3;
-};
-
-const generateColor = () => {
-  return `rgba(${Math.floor(Math.random() * 256)}, ${Math.floor(
+const generateRadius = () => Math.random() * 100;
+const generateInset = () => Math.random();
+const generateSides = () => Math.floor(Math.random() * 10) + 3;
+const generateColor = () =>
+  `rgba(${Math.floor(Math.random() * 256)}, ${Math.floor(
     Math.random() * 256
   )}, ${Math.floor(Math.random() * 256)}, ${Math.random().toFixed(1)})`;
-};
-
-const generateX = () => {
-  return Math.random() * 50;
-};
-
-const generateY = () => {
-  return Math.random() * 50;
-};
+const generateX = () => Math.random() * 50;
+const generateY = () => Math.random() * 50;
 
 const shapeProperties = {
   Shape1: {
