@@ -47,9 +47,9 @@ function drawShape(x, y, radius, inset, n) {
   //* We use Math.PI(half circle) instead of Math.PI * 2(full circle) because this loop creates 2 segments every time it runs.
   for (let i = 0; i < n; i++) {
     ctx.rotate(Math.PI / n); // rotate half circle(180 deg / 3.14 rad) by n
-    ctx.lineTo(0, 0 - radius * inset); // first drawn segment, outer radius
+    ctx.lineTo(0, 0 - radius * inset); // first drawn segment, inner
     ctx.rotate(Math.PI / n);
-    ctx.lineTo(0, 0 - radius); // second drawn segment, inner radius
+    ctx.lineTo(0, 0 - radius); // second drawn segment, outer
   }
 
   ctx.restore();
