@@ -2,6 +2,7 @@
 
 - Hold Left Mouse Button to draw
 - Use 'R' button on keyboard or Reset to restart
+- Brush is made up of 3 geometric shapes
 - Shapes and colors are randomized
 - Shapes preview are visible in upper-left corner
 ![brush1](https://github.com/user-attachments/assets/a53355d9-fcb5-47a8-8a33-2dcd2ca97dbc)
