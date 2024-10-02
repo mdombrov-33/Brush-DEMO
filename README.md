@@ -1,3 +1,4 @@
+Desktop only
 ### Colorful brush
 
 - Hold Left Mouse Button to draw
